@@ -1,0 +1,33 @@
+{
+  "model": "LightGBM_tuned",
+  "selected_threshold": 0.4,
+  "selection_rule": "max F1 among thresholds with validation recall >= 0.5",
+  "validation_metrics_at_threshold": {
+    "threshold": 0.4,
+    "roc_auc": 0.7609801134138509,
+    "pr_auc": 0.23968247068129184,
+    "precision": 0.1440940012368584,
+    "recall_sensitivity": 0.6314363143631436,
+    "specificity": 0.75,
+    "f1": 0.23464249748237667,
+    "brier_score": 0.1268663578509498,
+    "tn": 4152.0,
+    "fp": 1384.0,
+    "fn": 136.0,
+    "tp": 233.0
+  },
+  "test_metrics_at_threshold": {
+    "threshold": 0.4,
+    "roc_auc": 0.7558633416653648,
+    "pr_auc": 0.24558242187129223,
+    "precision": 0.14800261951538965,
+    "recall_sensitivity": 0.6108108108108108,
+    "specificity": 0.764992774566474,
+    "f1": 0.2382709541381128,
+    "brier_score": 0.12464173241903112,
+    "tn": 4235,
+    "fp": 1301,
+    "fn": 144,
+    "tp": 226
+  }
+}

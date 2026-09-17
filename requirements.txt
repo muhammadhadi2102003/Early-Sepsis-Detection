@@ -1,0 +1,51 @@
+# ============================================================
+# Early Sepsis Detection — requirements.txt
+# Tested conceptually against Python 3.10 / 3.11
+# Install with:  pip install -r requirements.txt
+# ============================================================
+
+# --- Core data handling ---
+numpy>=1.24,<2.0
+pandas>=2.0,<2.3
+scipy>=1.10,<1.13
+pyarrow>=14.0        # fast parquet I/O for interim/processed data
+
+# --- Visualization ---
+matplotlib>=3.7,<3.9
+seaborn>=0.12,<0.14
+plotly>=5.18,<6.0
+
+# --- Classical Machine Learning ---
+scikit-learn>=1.3,<1.5
+xgboost>=2.0,<2.1
+lightgbm>=4.1,<4.4
+catboost>=1.2,<1.3
+imbalanced-learn>=0.11,<0.13   # kept for completeness; SMOTE NOT used by default
+
+# --- Hyperparameter tuning ---
+optuna>=3.4,<3.7
+
+# --- Deep Learning (choose ONE backend; TensorFlow used in code by default) ---
+tensorflow>=2.14,<2.17
+# torch>=2.1            # uncomment if you prefer a PyTorch LSTM/GRU implementation
+
+# --- Explainability ---
+shap>=0.44,<0.46
+
+# --- App / deployment ---
+streamlit>=1.30,<1.38
+
+# --- Notebooks ---
+jupyter>=1.0
+ipykernel>=6.25
+nbformat>=5.9
+
+# --- Utilities ---
+joblib>=1.3
+tqdm>=4.66
+python-dotenv>=1.0
+pyyaml>=6.0
+
+# --- Testing ---
+pytest>=7.4
+pytest-cov>=4.1

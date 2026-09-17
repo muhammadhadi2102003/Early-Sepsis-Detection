@@ -1,0 +1,23 @@
+{
+  "calibration_method": "isotonic",
+  "brier_scores": {
+    "uncalibrated": 0.1268663578509498,
+    "platt": 0.05371060624508858,
+    "isotonic": 0.052697880385993885
+  },
+  "final_threshold": 0.1,
+  "final_test_metrics": {
+    "threshold": 0.1,
+    "roc_auc": 0.7532824461021715,
+    "pr_auc": 0.22324366342766205,
+    "precision": 0.15993404781533388,
+    "recall_sensitivity": 0.5243243243243243,
+    "specificity": 0.8159320809248555,
+    "f1": 0.24510423246999366,
+    "brier_score": 0.05334039949313438,
+    "tn": 4517,
+    "fp": 1019,
+    "fn": 176,
+    "tp": 194
+  }
+}

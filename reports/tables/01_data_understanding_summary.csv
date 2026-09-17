@@ -1,0 +1,2 @@
+n_patient_files,n_unique_patients,total_observations,n_columns,n_duplicate_rows,sepsis_positive_patients,sepsis_negative_patients,patient_level_prevalence_pct,sepsis_positive_observations,sepsis_negative_observations,icu_los_min_hours,icu_los_max_hours,icu_los_median_hours
+40336,40336,1552210,43,0,2932,37404,7.269,27916,1524294,8.0,336.0,39.0

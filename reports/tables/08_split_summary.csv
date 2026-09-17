@@ -1,0 +1,4 @@
+split,n_patients,n_positive,n_negative,positive_pct
+train,27560,1724,25836,6.255
+val,5905,369,5536,6.249
+test,5906,370,5536,6.265

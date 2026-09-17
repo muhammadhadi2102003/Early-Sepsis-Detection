@@ -1,0 +1,30 @@
+# Python cache
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+*.egg-info/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Environment / secrets
+.env
+.env.*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+nohup.out
+
+# Runtime / generated binaries
+cloudflared-linux-amd64
+cloudflared-linux-amd64.1
+catboost_info/
+
+# Large file exceeding GitHub's normal file limit
+data/processed/model_ready_arrays.npz
