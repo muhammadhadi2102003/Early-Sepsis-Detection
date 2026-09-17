@@ -36,6 +36,14 @@ def compute_metrics(y_true: np.ndarray, y_prob: np.ndarray, threshold: float = 0
     `y_prob` must be predicted probabilities (not hard labels) so ROC-AUC/
     PR-AUC/Brier score (threshold-independent) can be computed alongside
     the threshold-dependent metrics (precision/recall/F1/specificity).
+
+    NOTE on `accuracy`: included for completeness/familiarity, but this
+    project deliberately does NOT use it as a ranking or selection metric
+    (see Phase 12) — with ~6% positive prevalence, a trivial "always
+    predict negative" classifier scores ~93.7% accuracy while catching
+    zero true positives. Always report `accuracy` alongside that trivial
+    baseline (see `trivial_baseline_accuracy` below) and alongside
+    recall/PR-AUC, never in isolation.
     """
     y_pred = (y_prob >= threshold).astype(int)
 
@@ -45,6 +53,8 @@ def compute_metrics(y_true: np.ndarray, y_prob: np.ndarray, threshold: float = 0
     recall = tp / (tp + fn) if (tp + fn) > 0 else np.nan  # sensitivity
     specificity = tn / (tn + fp) if (tn + fp) > 0 else np.nan
     f1 = (2 * precision * recall / (precision + recall)) if (precision + recall) > 0 else np.nan
+    accuracy = (tp + tn) / (tp + tn + fp + fn)
+    trivial_baseline_accuracy = (tn + fp) / (tp + tn + fp + fn)  # = 1 - prevalence
 
     return {
         "threshold": threshold,
@@ -54,6 +64,8 @@ def compute_metrics(y_true: np.ndarray, y_prob: np.ndarray, threshold: float = 0
         "recall_sensitivity": recall,
         "specificity": specificity,
         "f1": f1,
+        "accuracy": accuracy,
+        "trivial_baseline_accuracy": trivial_baseline_accuracy,
         "brier_score": brier_score_loss(y_true, y_prob),
         "tn": int(tn), "fp": int(fp), "fn": int(fn), "tp": int(tp),
     }
@@ -67,6 +79,10 @@ def print_metrics(metrics: dict, model_name: str = "Model") -> None:
     print(f"  Recall (Sensitivity): {metrics['recall_sensitivity']:.4f}")
     print(f"  Specificity:        {metrics['specificity']:.4f}")
     print(f"  F1:                 {metrics['f1']:.4f}")
+    if "accuracy" in metrics:
+        print(f"  Accuracy:           {metrics['accuracy']:.4f}  "
+              f"(trivial always-negative baseline: {metrics['trivial_baseline_accuracy']:.4f} "
+              f"— accuracy alone is NOT a meaningful comparison at this prevalence, see Phase 12)")
     print(f"  Brier score:        {metrics['brier_score']:.4f}")
     print(f"  Confusion matrix:   TN={metrics['tn']} FP={metrics['fp']} FN={metrics['fn']} TP={metrics['tp']}")
 
