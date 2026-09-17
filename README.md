@@ -128,7 +128,18 @@ well against sequence models.
 | PR-AUC | 0.2307 | 0.2232 |
 | Recall (sensitivity) | 57.2% | 52.4% |
 | Specificity | 81.0% | 81.6% |
+| Accuracy | 79.5% | 79.8% |
 | Brier score | 0.0527 | 0.0533 |
+
+**A note on accuracy:** it is reported above for familiarity, but is
+deliberately NOT used anywhere in this project to select or rank models
+(see Phase 12). At ~6% positive prevalence, a trivial "always predict
+negative" classifier scores **93.7% accuracy** — higher than this model's
+79.8% — while catching zero septic patients. This model's lower accuracy
+is the direct, expected cost of catching 52% of positives instead of 0%;
+PR-AUC and recall are the metrics that actually reflect its clinical
+usefulness. Always present accuracy alongside this trivial baseline, never
+in isolation.
 
 Validation and test metrics are closely matched throughout tuning/threshold
 selection, indicating the pipeline generalizes rather than overfitting to
