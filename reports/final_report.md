@@ -258,7 +258,15 @@ investigation, not resolved issues.
 | PR-AUC | 0.2307 | 0.2232 |
 | Recall | 57.2% | 52.4% |
 | Specificity | 81.0% | 81.6% |
+| Accuracy | 79.5% | 79.8% |
 | Brier score | 0.0527 | 0.0533 |
+
+**Accuracy caveat:** the trivial "always predict negative" classifier
+scores 93.7% accuracy at this ~6% prevalence while catching zero true
+positives (Section 15) — this model's lower 79.8% accuracy is the direct,
+expected cost of achieving 52.4% recall instead of 0%. Accuracy is reported
+here for familiarity only and was not used anywhere in this project to
+select, rank, or tune models.
 
 Selected based on the combination of highest PR-AUC/ROC-AUC among all
 models tested, close validation/test agreement (no overfitting evidence),
